@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}QR Code Preview{% endblock %}
+{% block content %}
+<div class="max-w-sm mx-auto delta-card text-center">
+    <h2 class="text-xl mb-4">QR Code Preview</h2>
+    <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code" class="mx-auto mb-4 border p-2 rounded" />
+    <div>
+        <a href="data:image/png;base64,{{ qr_base64 }}" download="{{ filename }}"
+            class="px-4 py-2 delta-btn rounded">Download QR</a>
+    </div>
+</div>
+{% endblock %}

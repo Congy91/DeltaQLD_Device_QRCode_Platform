@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Import{% endblock %}
+{% block content %}
+<div class="max-w-lg mx-auto delta-card">
+    <h2 class="text-xl mb-2">Import devices from Excel</h2>
+    <p class="text-sm text-gray-600 mb-4">
+        Upload an Excel with columns like: id, device_name, device_number,
+        device_type, device_serial, device_ip.
+    </p>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="excel_file" accept=".xlsx,.xls" class="mb-3" required />
+
+        <label for="site_id" class="block mb-1 font-semibold">Assign imported devices to a site:</label>
+        <select name="site_id" id="site_id" class="mb-3 w-full p-2 border rounded">
+            <option value="">-- Select a site --</option>
+            {% for site in sites %}
+            <option value="{{ site.id }}">{{ site.name }}</option>
+            {% endfor %}
+        </select>
+
+        <div>
+            <button class="px-4 py-2 delta-btn rounded">Upload</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
